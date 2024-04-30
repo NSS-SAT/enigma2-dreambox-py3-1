@@ -36,6 +36,14 @@ from Screens.vavoo import MainVavoo
 self.session.open(MainVavoo)  
 </code>
         </item>
+		
+		 <item weight="12" level="0" text="NSS Radio Stream Live" entryID="radiom">
+            <code>
+from Screens.radio import radiom1
+self.session.open(radiom1)  
+</code>
+        </item>
+		
         <item weight="15" level="0" text="NSS Skin Setup" entryID="AglareSetup">
             <code>
 from Plugins.Extensions.Aglare.plugin import AglareSetup
