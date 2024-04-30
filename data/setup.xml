@@ -13,6 +13,9 @@
 		<item level="1" text="Sort order for menu entries" description="This option allows you to hide and sort menu entries. When selecting user you can change order and hide menu items via the blue button. With the user defined hidden the blue button is not shown in the menus">config.usage.menu_sort_mode</item>
 		<item level="1" text="Sort order for setup entries" description="This option allows you to alphabetically sort setup menu entries.">config.usage.sort_settings</item>
 		<item level="1" text="Show screen path" description="This option allows you to show the full screen path leading to the current screen.">config.usage.showScreenPath</item>
+        <!-- add @lululla -->
+        <item level="0" text="Plugin Browser Style (Need Restart GUI)" description="This option allows you to select the plugin browser style (Need Restart GUI).">config.misc.pluginstyle</item>
+        <!-- add end @lululla -->
 		<item level="1" text="Virtual keyboard skin" description="You can select the skin of virtual keyboard.">config.misc.virtualkeyBoardstyle</item>
 		<item level="0" text="Plugin Browser Style (Need Restart GUI)" description="This option allows you to select the plugin browser style (Need Restart GUI).">config.misc.plugin_style</item>
 		<item level="0" text="Show menu or plugin numbers" description="This option allows you to show menu and/or plugin number quick links.">config.usage.menu_show_numbers</item>
@@ -126,6 +129,50 @@
 		<item level="0" text="Sort order for help screen" description="Choose the order in which items are displayed in Help windows">config.usage.helpSortOrder</item>
 		<item level="0" text="Animation speed of help indicators" description="Control the animation speed of the button indicators in the Help screen. 'Disabled' turns off animation so that indicators jump between buttons.">config.usage.helpAnimationSpeed</item>
 	</setup>
+    <setup key="CCcamLineEdit" title="CCcam Line Editor">
+        <item level="0" text="Protocol" description="Select the Softcam protocol.">config.cccamlineedit.protocol</item>
+        <item level="0" text="Domain" description="Edit the CCcam/NewCamd server hostname.">config.cccamlineedit.domain</item>
+        <item level="0" text="Port" description="Edit the CCcam/NewCamd server port.">config.cccamlineedit.port</item>
+        <item level="0" text="Username" description="Edit the username.">config.cccamlineedit.username</item>
+        <item level="0" text="Password" description="Edit the password.">config.cccamlineedit.password</item>
+        <item level="0" text="NewCamd DES Key" description="Edit the NewCamd DES Key." conditional="config.cccamlineedit.protocol.value == 'N:'">config.cccamlineedit.deskey</item>
+    </setup>
+    <setup key="CCcamProfile" title="CCcam Profile Settings">
+        <item level="0" text="Name" description="Edit the profile name.">config.cccaminfo.name</item>
+        <item level="0" text="IP" description="Edit the remote IP address.">config.cccaminfo.ip</item>
+        <item level="0" text="Username" description="Edit the username.">config.cccaminfo.username</item>
+        <item level="0" text="Password" description="Edit the password.">config.cccaminfo.password</item>
+        <item level="0" text="Port" description="Edit the remote CCCam port.">config.cccaminfo.port</item>
+    </setup>
+    <setup key="Softcam" title="Softcam Settings" showOpenWebif="1">
+        <item level="0" text="Select Softcam" description="Select a Softcam from the available list.">config.misc.softcams</item>
+        <item level="2" text="Show OScam/CCcam in Extension Menu" description="Allows you to show/hide OScam/CCcam in the Extension Menu screen (BLUE button).">config.softcam.showInExtensions</item>
+    </setup>
+    <setup key="SoftwareManager" title="Software Manager Settings" showOpenWebif="1">
+        <if conditional="BoxInfo.getItem('model').startswith('et')">
+            <item level="2" text="Select Software Update" description="Select how your box will upgrade.">config.plugins.softwaremanager.updatetype</item>
+        </if>
+        <item level="2" text="Overwrite configuration files?" description="Overwrite configuration files during software upgrade?">config.plugins.softwaremanager.overwriteConfigFiles</item>
+        <item level="2" text="Overwrite Setting Files ?" description="Overwrite setting files (channellist) during software upgrade?">config.plugins.softwaremanager.overwriteSettingsFiles</item>
+        <item level="2" text="Overwrite Driver Files ?" description="Overwrite driver files during software upgrade?">config.plugins.softwaremanager.overwriteDriversFiles</item>
+        <item level="2" text="Overwrite Emu Files ?" description="Overwrite softcam files during software upgrade?" requires="HasSoftcamEmu">config.plugins.softwaremanager.overwriteEmusFiles</item>
+        <item level="2" text="Overwrite Picon Files ?" description="Overwrite picon files during software upgrade?">config.plugins.softwaremanager.overwritePiconsFiles</item>
+        <item level="2" text="Overwrite Bootlogo Files ?" description="Overwrite bootlogo files during software upgrade?">config.plugins.softwaremanager.overwriteBootlogoFiles</item>
+        <item level="2" text="Overwrite Spinner Files ?" description="Overwrite spinner files during software upgrade?">config.plugins.softwaremanager.overwriteSpinnerFiles</item>
+        <item level="2" text="Mode for autorestore" description="Turbo: One reboot after flash\nFast: One reboot after flash, one reboot after restore\nSlow: One reboot after flash, one reboot after restore in GUI">config.plugins.softwaremanager.restoremode</item>
+    </setup>
+    <setup key="OSCamInfoSetup" title="OSCam Information Settings">
+        <item level="0" text="Read Userdata from oscam.conf" description="Read Userdata from oscam.conf">config.oscaminfo.userDataFromConf</item>
+        <if conditional="not config.oscaminfo.userDataFromConf.value">
+            <item level="0" text="Username (httpuser)" description="Username (httpuser)">config.oscaminfo.username</item>
+            <item level="0" text="Password (httpwd)" description="Password (httpuser)">config.oscaminfo.password</item>
+            <item level="0" text="IP address" description="IP address">config.oscaminfo.ip</item>
+            <item level="0" text="Port" description="Port">config.oscaminfo.port</item>
+        </if>
+        <item level="0" text="Automatically update Client/Server View" description="Automatically update Client/Server View">config.oscaminfo.autoupdate</item>
+        <item level="0" text="Update interval (in seconds)" description="Update interval (in seconds)">config.oscaminfo.intervall</item>
+        <!-- <item level="0" text="Automatically update Log-Fullscreen View" description="Automatically update Log-Fullscreen View">config.oscaminfo.autoUpdateLog</item> -->
+    </setup>
 	<setup key="EPG" title="EPG Setup">
 		<item level="2" text="EPG location" description="Choose the location where the EPG data will be stored when your device is shut down. The location must be available at boot time.">config.misc.epgcachepath</item>
 		<item level="2" text="EPG filename" description="Choose the name of the file that holds the EPG data when your device is shut down. This can be handy to differentiate between several boxes.">config.misc.epgcachefilename</item>
